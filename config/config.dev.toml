@@ -33,7 +33,7 @@ host = "postgres.orb.local"
 port = 5432
 database = "data_cube"
 username = "postgres"
-password = "smcddNr2mrpwgYvO6ICRLPFfLFd27WySGN9a7a9JrsYP3tIP"
+password = "postgres"
 
 # [[sqlite]]
 # database = "local/data/main.db"
