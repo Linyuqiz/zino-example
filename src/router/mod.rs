@@ -1,16 +1,15 @@
 use ntex::web::{get, post, ServiceConfig};
 use zino::{DefaultController, RouterConfigure};
-use zino_model::Tag;
+use zino_example::model::user::User;
 
 pub fn routes() -> Vec<RouterConfigure> {
-    vec![tag_router as RouterConfigure]
+    vec![user_router as RouterConfigure]
 }
 
-fn tag_router(cfg: &mut ServiceConfig) {
-    cfg.route("/tag/new", post().to(Tag::new))
-        .route("/tag/{id}/delete", post().to(Tag::soft_delete))
-        .route("/tag/{id}/update", post().to(Tag::update))
-        .route("/tag/{id}/view", get().to(Tag::view))
-        .route("/tag/list", get().to(Tag::list))
-        .route("/tag/tree", get().to(Tag::tree));
+fn user_router(cfg: &mut ServiceConfig) {
+    cfg.route("/user/list", get().to(User::list))
+        .route("/user/detail", get().to(User::view))
+        .route("/user/create", post().to(User::new))
+        .route("/user/update", post().to(User::update))
+        .route("/user/delete", post().to(User::delete));
 }
