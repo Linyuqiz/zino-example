@@ -22,8 +22,8 @@ pub struct User {
     name: String,
     #[schema(not_null)]
     description: String,
-    #[schema(default_value = "now")]
-    create_time: DateTime,
-    #[schema(default_value = "now")]
-    update_time: DateTime,
+    #[schema(read_only, default_value = "now", index_type = "btree")]
+    created_at: DateTime,
+    #[schema(default_value = "now", index_type = "btree")]
+    updated_at: DateTime,
 }

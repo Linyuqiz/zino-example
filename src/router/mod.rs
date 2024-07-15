@@ -1,15 +1,20 @@
-use ntex::web::{get, post, ServiceConfig};
-use zino::{DefaultController, RouterConfigure};
+use axum::{
+    routing::{get, post},
+    Router,
+};
+use zino::DefaultController;
 use zino_example::model::user::User;
 
-pub fn routes() -> Vec<RouterConfigure> {
-    vec![user_router as RouterConfigure]
-}
+pub fn routes() -> Vec<Router> {
+    let mut routes = Vec::new();
 
-fn user_router(cfg: &mut ServiceConfig) {
-    cfg.route("/user/list", get().to(User::list))
-        .route("/user/detail", get().to(User::view))
-        .route("/user/create", post().to(User::new))
-        .route("/user/update", post().to(User::update))
-        .route("/user/delete", post().to(User::delete));
+    let router = Router::new()
+        .route("/user/list", get(User::list))
+        .route("/user/get", get(User::view))
+        .route("/user/create", post(User::new))
+        .route("/user/update", post(User::update))
+        .route("/user/delete", post(User::soft_delete));
+    routes.push(router);
+
+    routes
 }

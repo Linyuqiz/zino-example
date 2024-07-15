@@ -4,11 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-zino = { version = "0.23.2", features = ["ntex", "orm"] }
-zino-core = { version = "0.24.2", features = ["orm-postgres"] }
-zino-derive = { version = "0.21.2" }
-zino-model = { version = "0.21.2" }
+zino = { version = "0", features = ["axum", "orm"] }
+zino-core = { version = "0", features = ["orm-postgres"] }
+zino-derive = { version = "0" }
 
-ntex = { version = "2.0.2", default-features = false }
-serde = { version = "1.0.204", features = ["derive"] }
-tracing = "0.1.40"
+axum = { version = "0", default-features = false }
+serde = { version = "1", features = ["derive"] }
+tracing = "0"
